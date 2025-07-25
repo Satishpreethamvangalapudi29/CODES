@@ -1,0 +1,45 @@
+class Queue:
+    def __init__(self, size):
+        self.size = size
+        self.front = -1
+        self.rear = -1
+        self.queue = [0] * size
+
+    def enqueue(self, data):
+        if self.rear == self.size - 1:
+            print("Overflow")
+            return
+        if self.front == -1:  
+            self.front = 0
+        self.rear += 1
+        self.queue[self.rear] = data
+
+    def dequeue(self):
+        if self.front == -1 or self.front > self.rear:
+            print("Underflow")
+            return
+        print(f"Deleted: {self.queue[self.front]}")
+        self.front += 1
+
+    def Front_(self):
+        if self.front == -1 or self.front > self.rear:
+            print("Queue is empty")
+        else:
+            print("Front element:", self.queue[self.front])
+
+    def display(self):
+        if self.front == -1 or self.front > self.rear:
+            print("Queue is empty")
+            return
+        for i in range(self.front, self.rear + 1):
+            print(self.queue[i], end=" ")
+        print()
+obj = Queue(4)
+obj.enqueue(1)
+obj.enqueue(2)
+obj.enqueue(3)
+obj.display()
+print()
+obj.dequeue()
+obj.Front_()
+obj.display()
