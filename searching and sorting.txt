@@ -1,0 +1,62 @@
+#==================Linear search===========
+# def linear_search(arr,key):
+#     for i in range(len(arr)):
+#         if key==arr[i]:
+#             return f"value found in the index of {i}"
+#     return "not found"
+# a = [10,4,7,9,16,6]
+# print(linear_search(a,1))
+
+#=====================Binary search=========
+
+# def Binary_search(key):
+#     s = 0
+#     e = len(a)-1
+#     while s<=e:
+#         mid = (s+e)//2
+#         if a[mid]==key:
+#             return f"value found in the index of {mid}"
+#         if a[mid]>key:
+#             e = mid-1
+#         else:
+#             s = mid+1
+#     return "not found"
+
+
+#====================Bubble sort========
+# def bubble_sort():
+#     for phase in range(1,len(a)):
+#         flag = 0
+#         for i in range(len(a)-phase):
+#             if a[i]>a[i+1]:
+#                 flag=1
+#                 a[i],a[i+1]=a[i+1],a[i]
+#         if flag==0: return
+
+#===============Selection sort=========
+
+# def selection_sort():
+#
+#     for phase in range(len(a)-1):
+#         min = phase
+#         for i in range(phase+1,len(a)):
+#             if a[i]<a[min]:
+#                 min = i
+#         a[phase],a[min] = a[min],a[phase]
+
+
+#===================Insertion sort======
+
+def insertion_sort():
+
+    for i in range(1,len(a)):
+        j = i-1
+        temp =a[i]
+        while j>=0 and a[j]>temp:
+            a[j+1]=a[j]
+            j-=1
+        a[j+1]=temp
+
+a = [33,45,38,2,14,16]
+insertion_sort()
+print(a)

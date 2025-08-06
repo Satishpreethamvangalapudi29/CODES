@@ -1,0 +1,83 @@
+class Node:
+    def __init__(self,data):
+        self.data = data
+        self.left = None
+        self.right = None
+class BST:
+    def __init__(self):
+        self.root = None
+
+    def insert(self,data):
+        self.root = self.rec_insert(self.root,data)
+
+
+    def rec_insert(self,root,data):
+        if root is None:
+            return Node(data)
+        if  data >  root.data:
+             root.right =self.rec_insert(root.right,data)
+        else:
+            root.left = self.rec_insert(root.left,data)
+        return root
+
+    def inorder(self):
+        self.rec_inorder(self.root)
+
+    def rec_inorder(self,root):
+        if root:
+            self.rec_inorder(root.left)
+            print(root.data,end=" ")
+            self.rec_inorder(root.right)
+    def search(self,root,key):
+        if root:
+            if root.data == key:  return root
+            if root.data>key: return self.search(root.left,key)
+            return self.search(root.right,key)
+
+    def find_min(self):
+        if self.root:
+            cur = self.root
+            while cur.left:
+                cur = cur.left
+            print(cur.data)
+
+    def find_max(self,root):
+        if root:
+            cur = root
+            while cur.right:
+                cur = cur.right
+            return cur.data
+
+    def delete(self,root,key):
+        if root:
+            if root.data > key:
+                root.left = self.delete(root.left,key)
+            elif root.data<key:
+                root.right = self.delete(root.right,key)
+            else:
+
+                if root.right is None:
+                    return root.left
+                if root.left is None:
+                    return root.right
+
+                max_val = self.find_max(root.left)
+                root.data = max_val
+                root.left =self.delete(root.left,max_val)
+            return root
+
+
+
+
+
+
+
+obj = BST()
+value = [3,7 , 5 ,2 ,9 ,6 ,8 ]
+for i in value:
+    obj.insert(i)
+obj.inorder()
+print()
+obj.delete(obj.root,3)
+obj.inorder()
+This paste expires in <1 day. Public IP access. Share whatever you see with others in seconds with Context.Terms of ServiceReport this
